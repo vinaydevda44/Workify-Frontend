@@ -40,11 +40,11 @@ const WorkifyLogin = () => {
       if (res.data.success) {
         const token = res.data.token;
 
-        // 🔐 store token
+       
         dispatch(setToken(token));
         localStorage.setItem("token", JSON.stringify(token));
 
-        // set default auth header
+      
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
         toast.success("Logged in successfully! 🎉");

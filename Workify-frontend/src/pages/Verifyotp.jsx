@@ -39,7 +39,7 @@ const VerifyOtp = () => {
         password,
         phone,
         role,
-        otp, // OTP from email
+        otp, 
       });
 
       if (res.data.success) {
@@ -96,7 +96,7 @@ const VerifyOtp = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 flex items-center justify-center px-4">
-      {/* Background blobs */}
+     
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute -top-24 -left-10 h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl"></div>
         <div className="absolute -bottom-24 -right-10 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"></div>
@@ -104,7 +104,7 @@ const VerifyOtp = () => {
 
       <div className="relative z-10 w-full max-w-md">
         <div className="backdrop-blur-xl bg-slate-900/80 border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/40 p-8 md:p-10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-emerald-900/40">
-          {/* Header */}
+          
           <div className="mb-6 flex items-center gap-3">
             <div className="h-11 w-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-blue-500 shadow-lg shadow-emerald-900/60">
               <span className="text-2xl">🔐</span>
@@ -119,7 +119,7 @@ const VerifyOtp = () => {
             </div>
           </div>
 
-          {/* Title */}
+         
           <div className="mb-6">
             <h2 className="text-lg md:text-xl font-semibold text-white tracking-tight flex items-center gap-2">
               Verify your OTP
@@ -134,9 +134,9 @@ const VerifyOtp = () => {
             )}
           </div>
 
-          {/* Form */}
+          
           <form className="space-y-5" onSubmit={handleSubmit}>
-            {/* OTP Input */}
+            
             <div className="space-y-2">
               <label className="text-xs md:text-sm font-medium text-slate-200">
                 Enter OTP
@@ -162,7 +162,7 @@ const VerifyOtp = () => {
               </p>
             </div>
 
-            {/* Verify Button */}
+            
             <button
               type="submit"
               disabled={loading}
@@ -172,7 +172,7 @@ const VerifyOtp = () => {
             </button>
           </form>
 
-          {/* Footer */}
+         
           <div className="mt-6 flex items-center justify-between text-[11px] md:text-xs text-slate-400">
             <button
               type="button"

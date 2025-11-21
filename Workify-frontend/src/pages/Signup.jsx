@@ -74,7 +74,7 @@ const WorkifySignup = () => {
 
       <div className="relative z-10 w-full max-w-md">
         <div className="backdrop-blur-xl bg-slate-900/80 border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/40 p-8 md:p-10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-emerald-900/40">
-          {/* Header */}
+        
           <div className="mb-6 flex items-center gap-3">
             <div className="h-11 w-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-blue-500 shadow-lg shadow-emerald-900/60">
               <span className="text-2xl">🛠️</span>
@@ -89,7 +89,7 @@ const WorkifySignup = () => {
             </div>
           </div>
 
-          {/* Title */}
+       
           <div className="mb-6">
             <h2 className="text-lg md:text-xl font-semibold text-white tracking-tight flex items-center gap-2">
               Create your worker account
@@ -97,9 +97,9 @@ const WorkifySignup = () => {
             </h2>
           </div>
 
-          {/* Form */}
+      
           <form className="space-y-5" onSubmit={handleSubmit}>
-            {/* Name */}
+           
             <div className="space-y-2">
               <label className="text-xs md:text-sm font-medium text-slate-200">
                 Full Name
@@ -119,7 +119,6 @@ const WorkifySignup = () => {
               </div>
             </div>
 
-            {/* Email */}
             <div className="space-y-2">
               <label className="text-xs md:text-sm font-medium text-slate-200">
                 Email
@@ -139,7 +138,7 @@ const WorkifySignup = () => {
               </div>
             </div>
 
-            {/* Password */}
+          
             <div className="space-y-2">
               <label className="text-xs md:text-sm font-medium text-slate-200">
                 Password
@@ -159,7 +158,6 @@ const WorkifySignup = () => {
               </div>
             </div>
 
-            {/* Phone */}
             <div className="space-y-2">
               <label className="text-xs md:text-sm font-medium text-slate-200">
                 Phone Number
@@ -179,7 +177,6 @@ const WorkifySignup = () => {
               </div>
             </div>
 
-            {/* Role Toggle */}
             <div className="space-y-2">
               <label className="text-xs md:text-sm font-medium text-slate-200">
                 Select Role
@@ -217,7 +214,7 @@ const WorkifySignup = () => {
               </p>
             </div>
 
-            {/* Submit */}
+          
             <button
               type="submit"
               className="mt-1 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-blue-600 px-4 py-2.5 text-sm md:text-base font-semibold text-white shadow-lg shadow-emerald-900/60 hover:brightness-110 active:scale-95 transition"
@@ -226,7 +223,7 @@ const WorkifySignup = () => {
             </button>
           </form>
 
-          {/* Footer */}
+         
           <div className="mt-6 flex items-center justify-between text-[11px] md:text-xs text-slate-400">
             <p>
               Already have an account?{" "}

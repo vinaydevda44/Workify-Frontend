@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 const WorkifyHome = () => {
   const navigate = useNavigate();
@@ -18,74 +19,21 @@ const WorkifyHome = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 text-slate-50 relative overflow-hidden">
-      {/* Background blobs */}
+      
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute -top-24 -left-10 h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl"></div>
         <div className="absolute -bottom-24 -right-10 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl"></div>
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-4 md:py-8">
-        {/* Navbar */}
-        <header className="flex items-center justify-between py-3 md:py-4">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-blue-500 shadow-lg shadow-emerald-900/60">
-              <span className="text-xl">🛠️</span>
-            </div>
-            <div>
-              <p className="text-lg md:text-xl font-semibold tracking-tight text-white">
-                Workify
-              </p>
-              <p className="text-[11px] md:text-xs text-slate-300/80">
-                Daily jobs. Real workers. Real work.
-              </p>
-            </div>
-          </div>
+       
+        <Navbar/>
 
-          {/* Nav links + auth */}
-          <div className="hidden md:flex items-center gap-6 text-sm">
-            <button className="text-slate-300 hover:text-white transition">
-              Home
-            </button>
-            <button
-              className="text-slate-300 hover:text-white transition"
-              onClick={handleFindWork}
-            >
-              Find Work
-            </button>
-            <button
-              className="text-slate-300 hover:text-white transition"
-              onClick={handlePostJob}
-            >
-              Post a Job
-            </button>
-            <button className="text-slate-300 hover:text-white transition">
-              About
-            </button>
-          </div>
-
-          {/* Auth buttons */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={handleLogin}
-              className="text-xs md:text-sm px-3 py-1.5 rounded-lg border border-slate-600/70 bg-slate-900/40 hover:bg-slate-800/70 text-slate-200 transition"
-            >
-              Log in
-            </button>
-            <button
-              onClick={handleFindWork}
-              className="text-xs md:text-sm px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-emerald-500 via-emerald-600 to-blue-600 shadow-lg shadow-emerald-900/60 hover:brightness-110 active:scale-95 font-semibold text-white transition"
-            >
-              Join now 🚀
-            </button>
-          </div>
-        </header>
-
-        {/* Main content */}
+      
         <main className="mt-6 md:mt-10 space-y-10 md:space-y-14">
-          {/* Hero section */}
+          
           <section className="grid md:grid-cols-2 gap-8 md:gap-10 items-center">
-            {/* Left: text */}
+          
             <div className="space-y-5 md:space-y-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/5 px-3 py-1 text-[11px] md:text-xs text-emerald-300">
                 <span className="text-sm">⚡</span>
@@ -135,7 +83,7 @@ const WorkifyHome = () => {
               </div>
             </div>
 
-            {/* Right: glass card mockup */}
+           
             <div className="md:flex items-center justify-end">
               <div className="w-full md:w-[360px] lg:w-[380px] backdrop-blur-xl bg-slate-900/80 border border-slate-700/60 rounded-2xl shadow-2xl shadow-black/50 p-5 md:p-6 space-y-4">
                 <div className="flex items-center justify-between gap-3">
@@ -151,7 +99,7 @@ const WorkifyHome = () => {
                 </div>
 
                 <div className="space-y-3">
-                  {/* Sample gig rows */}
+                 
                   {[
                     {
                       title: "House Cleaning Help",
@@ -209,7 +157,7 @@ const WorkifyHome = () => {
             </div>
           </section>
 
-          {/* Categories */}
+          
           <section className="space-y-4 md:space-y-5">
             <div className="flex items-center justify-between">
               <h2 className="text-lg md:text-xl font-semibold text-white tracking-tight">
@@ -249,7 +197,6 @@ const WorkifyHome = () => {
             </div>
           </section>
 
-          {/* How it works + Why Workify */}
           <section className="grid md:grid-cols-2 gap-6 md:gap-8">
             {/* How it works */}
             <div className="rounded-2xl bg-slate-900/70 border border-slate-700/70 p-5 md:p-6 space-y-4">
@@ -304,7 +251,7 @@ const WorkifyHome = () => {
               </div>
             </div>
 
-            {/* Why Workify */}
+            
             <div className="rounded-2xl bg-slate-900/70 border border-slate-700/70 p-5 md:p-6 space-y-4">
               <h3 className="text-base md:text-lg font-semibold text-white flex items-center gap-2">
                 Why workers & customers use Workify
@@ -343,7 +290,7 @@ const WorkifyHome = () => {
             </div>
           </section>
 
-          {/* Bottom CTA */}
+       
           <section className="mt-4 md:mt-6">
             <div className="rounded-2xl bg-gradient-to-r from-emerald-600/90 via-emerald-500/90 to-blue-600/90 px-5 md:px-8 py-4 md:py-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-4 shadow-xl shadow-emerald-900/60">
               <div>
@@ -374,7 +321,7 @@ const WorkifyHome = () => {
           </section>
         </main>
 
-        {/* Footer */}
+        
         <footer className="mt-8 md:mt-10 py-4 border-t border-slate-800/80 text-[11px] md:text-xs text-slate-500 flex flex-col md:flex-row items-center justify-between gap-2">
           <p>© {new Date().getFullYear()} Workify. All rights reserved.</p>
           <div className="flex gap-4">
