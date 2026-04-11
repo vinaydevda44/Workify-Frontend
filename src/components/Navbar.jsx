@@ -1,128 +1,114 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { setToken } from "../redux/slices/authSlice"; // adjust if needed
-import axios from "axios";
-import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import styles from "./styles/Navbar.module.scss";
 
-const Navbar = () => {
+function Navbar({token , setToken}) {
   const navigate = useNavigate();
 
+  
 
-  const token = useSelector((state) => state.auth.token);
-  const loggedIn = Boolean(token);
-
-  const dispatch = useDispatch();
-
-  const handleLogout = async () => {
-  try {
-    const res = await axios.post(
-      "http://localhost:4000/api/auth/logout",
-      {},
-      { withCredentials: true }
-    );
-
-    if (res.data.success) {
-      toast.success("Logged out successfully!");
-
-      localStorage.removeItem("token");    
-      dispatch(setToken(null));            
-
-      navigate("/");
+  const [user, setUser] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("user"));
+    } catch {
+      return null;
     }
-  } catch (err) {
-    console.error(err);
-    toast.error("Logout failed!");
-  }
-};
+  });
 
+  const [isOpen, setIsOpen] = useState(false);
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    // ✅ trigger update
+    window.dispatchEvent(new Event("authChange"));
+
+    setToken(null);
+    setUser(null);
+    setIsOpen(false);
+
+    navigate("/");
+  };
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-slate-950/60 border-b border-slate-800/70">
-      <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-3 md:py-4 flex items-center justify-between">
-        
-        
-        <div
-          className="flex items-center gap-2 cursor-pointer"
-          onClick={() => navigate("/")}
-        >
-          <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-blue-500 shadow-lg shadow-emerald-900/60">
-            <span className="text-xl">🛠️</span>
-          </div>
-          <div>
-            <p className="text-lg md:text-xl font-semibold tracking-tight text-white">
-              Workify
-            </p>
-            <p className="text-[11px] md:text-xs text-slate-300/80">
-              Daily jobs. Real workers. Real work.
-            </p>
-          </div>
-        </div>
-
+    <nav className={styles.navbar}>
       
-        <div className="hidden md:flex items-center gap-6 text-sm">
-          <button className="text-slate-300 hover:text-white transition">Home</button>
-          <button
-            className="text-slate-300 hover:text-white transition"
-            onClick={() => navigate("/signup")}
-          >
-            Find Provider
-          </button>
-          <button
-            className="text-slate-300 hover:text-white transition"
-            onClick={() => navigate("/signup")}
-          >
-            Post a Job
-          </button>
-          <button className="text-slate-300 hover:text-white transition">About</button>
-        </div>
+      {/* Logo */}
+      <Link to="/services" className={styles.logo}>
+        Workify
+      </Link>
 
-     
-        <div className="flex items-center gap-3">
+      {/* Toggle */}
+      <button
+        className={styles.toggle}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        ☰
+      </button>
 
-          {!loggedIn ? (
-            <>
-             
-              <button
-                onClick={() => navigate("/login")}
-                className="text-xs md:text-sm px-3 py-1.5 rounded-lg border border-slate-600/70 bg-slate-900/40 hover:bg-slate-800/70 text-slate-200 transition"
+      {/* Menu */}
+      <ul className={`${styles.menu} ${isOpen ? styles.show : ""}`}>
+        {token ? (
+          <>
+            <li>
+              <Link
+                to="/services"
+                className={styles.link}
+                onClick={() => setIsOpen(false)}
               >
-                Log in
-              </button>
+                Services
+              </Link>
+            </li>
 
-             
-              <button
-                onClick={() => navigate("/signup")}
-                className="text-xs md:text-sm px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-emerald-500 via-emerald-600 to-blue-600 shadow-lg hover:brightness-110 active:scale-95 font-semibold text-white transition"
+            <li>
+              <Link
+                to="/profile"
+                className={styles.link}
+                onClick={() => setIsOpen(false)}
               >
-                Join now 🚀
-              </button>
-            </>
-          ) : (
-            <>
-              
-              <button
-                onClick={() => navigate("/profile")}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/40 border border-slate-700 text-slate-200 hover:bg-slate-800 transition"
-              >
-                <span className="text-lg">👤</span>
-                <span className="text-xs md:text-sm font-medium">Profile</span>
-              </button>
+                Profile
+              </Link>
+            </li>
 
-           
+            <li className={styles.user}>
+              {user?.name || user?.username || "User"}
+            </li>
+
+            <li>
               <button
+                className={styles.button}
                 onClick={handleLogout}
-                className="text-xs md:text-sm px-3 py-1.5 rounded-lg border border-red-600/70 bg-red-900/40 hover:bg-red-800/70 text-red-200 transition"
               >
                 Logout
               </button>
-            </>
-          )}
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link
+                to="/"
+                className={styles.link}
+                onClick={() => setIsOpen(false)}
+              >
+                Login
+              </Link>
+            </li>
 
-        </div>
-      </div>
-    </header>
+            <li>
+              <Link
+                to="/signup"
+                className={styles.link}
+                onClick={() => setIsOpen(false)}
+              >
+                Signup
+              </Link>
+            </li>
+          </>
+        )}
+      </ul>
+    </nav>
   );
-};
+}
 
 export default Navbar;
